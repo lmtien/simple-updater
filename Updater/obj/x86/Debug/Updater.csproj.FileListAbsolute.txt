@@ -1,0 +1,10 @@
+c:\Users\user\Documents\AeroFS\Updater\Updater\obj\x86\Debug\Updater.frmMain.resources
+c:\Users\user\Documents\AeroFS\Updater\Updater\obj\x86\Debug\Updater.Properties.Resources.resources
+c:\Users\user\Documents\AeroFS\Updater\Updater\obj\x86\Debug\Updater.csproj.GenerateResource.Cache
+c:\Users\user\Documents\AeroFS\Updater\Updater\bin\Debug\Newtonsoft.Json.dll
+c:\Users\user\Documents\AeroFS\Updater\Updater\bin\Debug\Newtonsoft.Json.xml
+c:\Users\user\Documents\AeroFS\Updater\Updater\obj\x86\Debug\Updater.csprojResolveAssemblyReference.cache
+c:\Users\user\Documents\AeroFS\Updater\Updater\bin\Debug\Updater v1.0.0.exe
+c:\Users\user\Documents\AeroFS\Updater\Updater\bin\Debug\Updater v1.0.0.pdb
+c:\Users\user\Documents\AeroFS\Updater\Updater\obj\x86\Debug\Updater v1.0.0.exe
+c:\Users\user\Documents\AeroFS\Updater\Updater\obj\x86\Debug\Updater v1.0.0.pdb
