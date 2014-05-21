@@ -1,0 +1,4 @@
+*.pdb
+
+/Updater/obj
+/Updater/bin
