@@ -16,6 +16,9 @@ namespace Updater
 {
     public partial class frmMain : Form
     {
+        const string app_name = "WizAdmin";
+        const string app_exe = "Ezee Admin.exe";
+
         public frmMain()
         {
             InitializeComponent();
@@ -23,7 +26,7 @@ namespace Updater
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            this.Text = "WizAdmin Updater v" + FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+            this.Text = app_name + " Updater v" + FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
             backgroundWorker.RunWorkerAsync();
         }
 
@@ -110,7 +113,9 @@ namespace Updater
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.Close();
+            //Run main application
+            Process.Start(app_exe);
+            Application.Exit();
         }
     }
 
