@@ -17,7 +17,7 @@ namespace Updater
     public partial class frmMain : Form
     {
         const string app_name = "WizAdmin";
-        const string app_exe = "Ezee Admin.exe";
+        const string app_exe = "WizAdmin.exe";
 
         public frmMain()
         {
@@ -57,7 +57,7 @@ namespace Updater
                 backgroundWorker.ReportProgress(0, "Estimating time...");
 
                 //Get Job list
-                Jobs jobs = JsonConvert.DeserializeObject<Jobs>(File.ReadAllText(Path.Combine(current_info.server_url, "jobs.lmt")));
+                Jobs jobs = JsonConvert.DeserializeObject<Jobs>(File.ReadAllText(Path.Combine(current_info.server_url, @"jobs.lmt")));
 
                 //delegate for progress bar
                 pgrUpdating.Invoke((MethodInvoker)delegate
@@ -86,11 +86,11 @@ namespace Updater
                 }
                 backgroundWorker.ReportProgress(progress, "Finished");
 
-                MessageBox.Show("Updated to latest version " + latest_info.version + " successfully!\n\nChange logs:\n" + latest_info.change_log, "Information");
+                MessageBox.Show("Updated to latest version " + latest_info.version + " successfully !\n\n--- CHANGE LOGS ---\n" + latest_info.change_log, "Information");
             }
             catch
             {
-                MessageBox.Show("Something wrongs, please try again later!", "Error");
+                MessageBox.Show("Something wrongs, please try again later !", "Error");
             }
         }
 
@@ -104,7 +104,7 @@ namespace Updater
         {
             if (backgroundWorker.IsBusy)
             {
-                if (MessageBox.Show("Are you sure you want to close?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.No)
+                if (MessageBox.Show("Are you sure you want to close ?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
                     e.Cancel = true;
                 }
