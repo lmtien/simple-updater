@@ -68,8 +68,16 @@ namespace Updater
                 //Update======================
                 backgroundWorker.ReportProgress(0, "Updating...");
 
-                //Do Copy jobs
+                //Do Delete jobs
                 int progress = 0;
+                foreach (string dl in jobs.delete)
+                {
+                    backgroundWorker.ReportProgress(progress, "Updating: " + dl);
+                    File.Delete(dl);
+                    progress++;
+                }
+
+                //Do Copy jobs
                 foreach (string cp in jobs.copy)
                 {
                     backgroundWorker.ReportProgress(progress, "Updating: " + cp);
@@ -77,13 +85,6 @@ namespace Updater
                     progress++;
                 }
 
-                //Do Delete jobs
-                foreach (string dl in jobs.delete)
-                {
-                    backgroundWorker.ReportProgress(progress, "Updating: " + dl);
-                    File.Delete(dl);
-                    progress++;
-                }
                 backgroundWorker.ReportProgress(progress, "Finished");
 
                 MessageBox.Show("Updated to latest version " + latest_info.version + " successfully !\n\n--- CHANGE LOGS ---\n" + latest_info.change_log, "Information");
