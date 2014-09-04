@@ -89,9 +89,9 @@ namespace Updater
 
                 MessageBox.Show("Updated to latest version " + latest_info.version + " successfully !\n\n--- CHANGE LOGS ---\n" + latest_info.change_log, "Information");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Something wrongs, please try again later !", "Error");
+                MessageBox.Show("Something wrongs, please try again later !\n\n" + ex.Message, "Error");
             }
         }
 
