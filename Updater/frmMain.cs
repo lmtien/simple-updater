@@ -19,6 +19,9 @@ namespace Updater
         const string app_name = "WizAdmin";
         const string app_exe = "WizAdmin.exe";
 
+        const int TIMEOUT = 3000;
+        const int TRYAGAIN = 3;
+
         public frmMain()
         {
             InitializeComponent();
@@ -73,7 +76,36 @@ namespace Updater
                 foreach (string dl in jobs.delete)
                 {
                     backgroundWorker.ReportProgress(progress, "Updating: " + dl);
-                    File.Delete(dl);
+
+                    //for looping and try again if fail
+                    int count = 0;
+                    bool flagOk = true;                    
+                    do
+                    {
+                        //sleep and wait after fail
+                        if (!flagOk)
+                        {
+                            Thread.Sleep(TIMEOUT);
+                        }
+
+                        count++;
+                        flagOk = true;
+                        try
+                        {
+                            File.Delete(dl);
+                        }
+                        catch
+                        {
+                            flagOk = false;
+                        }
+                    } while ((!flagOk) && (count < TRYAGAIN));
+
+                    //check deleted or not
+                    if (!flagOk)
+                    {
+                        throw new Exception("Cannot delete \"" + dl + "\"");
+                    }
+
                     progress++;
                 }
 
@@ -81,7 +113,36 @@ namespace Updater
                 foreach (string cp in jobs.copy)
                 {
                     backgroundWorker.ReportProgress(progress, "Updating: " + cp);
-                    File.Copy(Path.Combine(current_info.server_url, cp), cp, true);
+
+                    //for looping and try again if fail
+                    int count = 0;
+                    bool flagOk = true;
+                    do
+                    {
+                        //sleep and wait after fail
+                        if (!flagOk)
+                        {
+                            Thread.Sleep(TIMEOUT);
+                        }
+
+                        count++;
+                        flagOk = true;
+                        try
+                        {
+                            File.Copy(Path.Combine(current_info.server_url, cp), cp, true);
+                        }
+                        catch
+                        {
+                            flagOk = false;
+                        }
+                    } while ((!flagOk) && (count < TRYAGAIN));
+
+                    //check deleted or not
+                    if (!flagOk)
+                    {
+                        throw new Exception("Cannot copy \"" + cp + "\"");
+                    }
+                    
                     progress++;
                 }
 
